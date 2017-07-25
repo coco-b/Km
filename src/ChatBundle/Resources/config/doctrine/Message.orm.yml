@@ -1,0 +1,17 @@
+ChatBundle\Entity\Message:
+    type: entity
+    table: null
+    repositoryClass: ChatBundle\Repository\MessageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        content:
+            type: string
+            length: 255
+        dateTime:
+            type: integer
+    lifecycleCallbacks: {  }
