@@ -1,17 +1,14 @@
 chat:
-    path:     /
+    path:     /home
     defaults: { _controller: ChatBundle:Chat:chat }
 
 
-#chat_message_add:
-#    path:     /Message
-#    default: { _controller: ChatBundle:Chat:add}
-#    methods: [GET, POST]
-#
-#
-#
-#
-#
+chat_message_add:
+    path:     /
+    defaults: { _controller: ChatBundle:Chat:Chatadd}
+    methods: [GET, POST]
+
+
 chat_homepage:
     path:     /
     defaults: { _controller: ChatBundle:Default:index }

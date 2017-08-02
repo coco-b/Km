@@ -15,8 +15,9 @@ class MessageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', TextType::class,array('label' => 'Message'))
-                ->add('submit', SubmitType::class,array('label' => 'envoyer'));
+        $builder
+            ->add('content', TextType::class,array('label' => 'message'))
+            ->add('submit', SubmitType::class,array('label' => 'envoyer'));
     }
 
     /**
@@ -25,7 +26,7 @@ class MessageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CommerceBundle\Entity\Category'
+            'data_class' => 'ChatBundle\Entity\Message'
         ));
     }
 
@@ -34,7 +35,7 @@ class MessageType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'commercebundle_category';
+        return 'chatbundle_message';
     }
 
 

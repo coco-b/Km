@@ -1,1 +1,46 @@
-Hello Monde
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row row">
+            <div class="row">
+                {{ form_start(form) }}
+                <div class="input-field col s6">
+                    {{ form_label (form.content) }}
+                    {{ form_widget (form.content) }}
+                    {{ form_errors (form.content) }}
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.submit, {'attr' : {'class': 'btn btn-primary'}}) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Modal Trigger FOR USER-->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
+
+{% endblock %}
