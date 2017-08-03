@@ -33,6 +33,7 @@ class ChatController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
+            $message->setDateTime(new \DateTime());
             $em->persist($message);
             $em->flush();
 

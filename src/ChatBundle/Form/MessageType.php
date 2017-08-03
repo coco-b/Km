@@ -19,7 +19,6 @@ class MessageType extends AbstractType
     {
         $builder
             ->add('content', TextType::class,array('label' => 'message'))
-            ->add('dateTime', DateTimeType::class, array('attr' => array('class' => 'datepicker')))
             ->add('submit', SubmitType::class,array('label' => 'envoyer'));
     }
 
