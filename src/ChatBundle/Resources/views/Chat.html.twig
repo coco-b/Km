@@ -2,44 +2,87 @@
 
 
 {% block body %}
-    <div class="container">
-        <div class="row row">
-            <div class="row">
-                {{ form_start(form) }}
-                <div class="input-field col s6">
-                    {{ form_label (form.content) }}
-                    {{ form_widget (form.content) }}
-                    {{ form_errors (form.content) }}
+
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="https://vertufineart.com/wp-content/uploads/2013/03/Alex-Katz-gray-day-1992.jpg"></div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <div class="container">
+                <div class="row row">
+                    <div class="row">
+                        {{ form_start(form) }}
+                        <div class="input-field col s6">
+                            <input type="text" class="datepicker">
+                            {{ form_label (form.dateTime) }}
+                            {{ form_widget (form.dateTime) }}
+                            {{ form_errors (form.dateTime) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_label (form.content) }}
+                            {{ form_widget (form.content) }}
+                            {{ form_errors (form.content) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            {{ form_widget(form.submit, {'attr' : {'class': 'btn btn-primary'}}) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            {% for message in messages %}
             <div class="row">
-                <div>
-                    {{ form_widget(form.submit, {'attr' : {'class': 'btn btn-primary'}}) }}
-                    {{ form_end(form) }}
+                <div class="col s12 m5">
+                    <div class="card-panel teal">
+                        <span class="white-text"> {{ message.dateTime }} </span>
+                        <span class="white-text"> {{ message.content }} </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            <!-- Modal Trigger FOR USER-->
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Amis</a>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal bottom-sheet">
+                <div class="modal-content">
+                    <ul>
+                       <li>
+                           <div class="chip">
+                               <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
+                               Jane Doe
+                           </div>
+                       </li>
+                       <li>
+                            <div class="chip">
+                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
+                                Jane Doe
+                            </div>
+                       </li>
+                       <li>
+                            <div class="chip">
+                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
+                                Jane Doe
+                            </div>
+                       </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-    <!-- Modal Trigger FOR USER-->
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal bottom-sheet">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="http://alexkatz.guggenheim-bilbao.eus/img/Alex-Katz-2012-White-Roses-9-Zoom.jpg"></div>
     </div>
+
+
 
 
 
