@@ -13,5 +13,7 @@ ChatBundle\Entity\Message:
             type: string
             length: 255
         dateTime:
-            type: integer
+            type: datetime
+        expediteur:
+            type: string
     lifecycleCallbacks: {  }

@@ -33,6 +33,9 @@ class ChatController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
+            $expediteur = $this->getUser()->getUsername();
+            $message->setDateTime(new \DateTime());
+            $message->setExpediteur($expediteur);
             $em->persist($message);
             $em->flush();
 

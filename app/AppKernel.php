@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new ChatBundle\ChatBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -52,4 +53,12 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+//pour bon fonctionnement du dateTime
+    public function __construct($environment, $debug)
+    {
+        parent::__construct($environment, $debug);
+        date_default_timezone_set('Europe/Paris');
+    }
+
+
 }

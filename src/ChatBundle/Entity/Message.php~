@@ -7,8 +7,9 @@ namespace ChatBundle\Entity;
  */
 class Message
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -18,7 +19,7 @@ class Message
     private $content;
 
     /**
-     * @var int
+     * @var \DateTime
      */
     private $dateTime;
 
@@ -26,7 +27,7 @@ class Message
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -60,7 +61,7 @@ class Message
     /**
      * Set dateTime
      *
-     * @param integer $dateTime
+     * @param \DateTime $dateTime
      *
      * @return Message
      */
@@ -74,11 +75,10 @@ class Message
     /**
      * Get dateTime
      *
-     * @return int
+     * @return \DateTime
      */
     public function getDateTime()
     {
         return $this->dateTime;
     }
 }
-
