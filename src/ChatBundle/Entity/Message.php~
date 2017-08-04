@@ -81,4 +81,33 @@ class Message
     {
         return $this->dateTime;
     }
+    /**
+     * @var string
+     */
+    private $expediteur;
+
+
+    /**
+     * Set expediteur
+     *
+     * @param string $expediteur
+     *
+     * @return Message
+     */
+    public function setExpediteur($expediteur)
+    {
+        $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get expediteur
+     *
+     * @return string
+     */
+    public function getExpediteur()
+    {
+        return $this->expediteur;
+    }
 }

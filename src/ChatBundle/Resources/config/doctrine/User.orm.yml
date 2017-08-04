@@ -6,3 +6,8 @@ ChatBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+
+    oneToMany:
+        messages:
+            targetEntity: ChatBundle\Entity\Message
+            mappedBy: user

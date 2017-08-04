@@ -110,4 +110,33 @@ class Message
     {
         return $this->expediteur;
     }
+    /**
+     * @var \ChatBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \ChatBundle\Entity\User $user
+     *
+     * @return Message
+     */
+    public function setUser(\ChatBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ChatBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

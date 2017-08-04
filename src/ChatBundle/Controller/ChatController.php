@@ -36,6 +36,8 @@ class ChatController extends Controller
             $expediteur = $this->getUser()->getUsername();
             $message->setDateTime(new \DateTime());
             $message->setExpediteur($expediteur);
+//            $user = $em->getRepository('ChatBundle:User')->findOneById($id);
+//            $message->setUser($user);
             $em->persist($message);
             $em->flush();
 

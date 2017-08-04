@@ -16,4 +16,10 @@ ChatBundle\Entity\Message:
             type: datetime
         expediteur:
             type: string
-    lifecycleCallbacks: {  }
+
+
+    manyToOne:
+        user:
+            targetEntity: ChatBundle\Entity\User
+            inversedBy: messages
+
