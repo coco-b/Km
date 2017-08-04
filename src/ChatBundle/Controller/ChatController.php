@@ -25,6 +25,7 @@ class ChatController extends Controller
     {
         $em =$this->getDoctrine()->getManager();
         $messages = $em ->getRepository(Message::class)->findAll();
+        $users = $em->getRepository('ChatBundle:User')->findAll();
 
 
         $message = new Message();
@@ -33,11 +34,9 @@ class ChatController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
-            $expediteur = $this->getUser()->getUsername();
+            $user = $this->getUser();
             $message->setDateTime(new \DateTime());
-            $message->setExpediteur($expediteur);
-//            $user = $em->getRepository('ChatBundle:User')->findOneById($id);
-//            $message->setUser($user);
+            $message->setUser($user);
             $em->persist($message);
             $em->flush();
 
@@ -45,6 +44,7 @@ class ChatController extends Controller
         }
 
         return $this->render('@Chat/Chat.html.twig', array(
+            'users' => $users,
             'message' => $message,
             'messages' => $messages,
             'form' => $form->createView(),

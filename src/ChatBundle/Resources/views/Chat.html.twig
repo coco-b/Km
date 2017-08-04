@@ -33,7 +33,12 @@
                 <div class="col s12 m5">
                     <div class="card-panel teal">
                         <span class="white-text"> {{ message.dateTime|date('m/d/Y') }} </span></br>
-                        <span class="white-text"> {{ message.expediteur }} </span></br>
+
+                        {% if  message.user is null %}
+                        {% else %}
+                        <span class="white-text"> {{ message.user.username }} </span></br>
+                        {% endif %}
+
                         <span class="white-text"> {{ message.content }} </span>
                     </div>
                 </div>
@@ -47,24 +52,15 @@
             <div id="modal1" class="modal bottom-sheet">
                 <div class="modal-content">
                     <ul>
+                        {% for user in users %}
                        <li>
                            <div class="chip">
                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
-                               Jane Doe
+                              {{ user.username }}
                            </div>
                        </li>
-                       <li>
-                            <div class="chip">
-                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
-                                Jane Doe
-                            </div>
-                       </li>
-                       <li>
-                            <div class="chip">
-                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
-                                Jane Doe
-                            </div>
-                       </li>
+                        {% endfor %}
+
                     </ul>
                 </div>
                 <div class="modal-footer">

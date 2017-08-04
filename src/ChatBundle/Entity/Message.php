@@ -23,6 +23,11 @@ class Message
      */
     private $dateTime;
 
+    /**
+     * @var \ChatBundle\Entity\User
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -81,40 +86,6 @@ class Message
     {
         return $this->dateTime;
     }
-    /**
-     * @var string
-     */
-    private $expediteur;
-
-
-    /**
-     * Set expediteur
-     *
-     * @param string $expediteur
-     *
-     * @return Message
-     */
-    public function setExpediteur($expediteur)
-    {
-        $this->expediteur = $expediteur;
-
-        return $this;
-    }
-
-    /**
-     * Get expediteur
-     *
-     * @return string
-     */
-    public function getExpediteur()
-    {
-        return $this->expediteur;
-    }
-    /**
-     * @var \ChatBundle\Entity\User
-     */
-    private $user;
-
 
     /**
      * Set user
