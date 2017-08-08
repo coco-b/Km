@@ -52,13 +52,21 @@
             <div id="modal1" class="modal bottom-sheet">
                 <div class="modal-content">
                     <ul>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <p>Bonjour {{ app.user.username }}, voici les personnes enrigstrées</p>
+                        {% endif %}
+
                         {% for user in users %}
+                            {% if user == app.user  %}
+
+                            {% else  %}
                        <li>
                            <div class="chip">
                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
                               {{ user.username }}
                            </div>
                        </li>
+                        {% endif %}
                         {% endfor %}
 
                     </ul>
