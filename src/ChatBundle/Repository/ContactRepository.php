@@ -10,4 +10,16 @@ namespace ChatBundle\Repository;
  */
 class ContactRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function myfindconctact($contact, $userconnected)
+    {
+        return $this->createQueryBuilder("c")
+            ->select('c')
+            ->where(':profilone MEMBER OF c.users')
+            ->andwhere(':profiltwo MEMBER OF c.users')
+            ->setParameters(array(
+           'profilone' => $contact,
+           'profiltwo' => $userconnected))
+            ->getQuery()->getResult();
+    }
+
 }

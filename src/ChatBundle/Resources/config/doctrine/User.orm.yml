@@ -11,3 +11,9 @@ ChatBundle\Entity\User:
         messages:
             targetEntity: ChatBundle\Entity\Message
             mappedBy: user
+
+    manyToMany:
+        contacts:
+            targetEntity: ChatBundle\Entity\Contact
+            mappedBy: users
+

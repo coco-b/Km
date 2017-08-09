@@ -16,10 +16,18 @@ class User extends BaseUser
     protected $id;
 
 
+
+
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $messages;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contacts;
 
 
     /**
@@ -54,5 +62,39 @@ class User extends BaseUser
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    /**
+     * Add contact
+     *
+     * @param \ChatBundle\Entity\Contact $contact
+     *
+     * @return User
+     */
+    public function addContact(\ChatBundle\Entity\Contact $contact)
+    {
+        $this->contacts[] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Remove contact
+     *
+     * @param \ChatBundle\Entity\Contact $contact
+     */
+    public function removeContact(\ChatBundle\Entity\Contact $contact)
+    {
+        $this->contacts->removeElement($contact);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }

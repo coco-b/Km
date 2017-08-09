@@ -8,6 +8,7 @@ namespace ChatBundle\Entity;
 class Message
 {
 
+
     /**
      * @var integer
      */
@@ -27,6 +28,11 @@ class Message
      * @var \ChatBundle\Entity\User
      */
     private $user;
+
+    /**
+     * @var \ChatBundle\Entity\Contact
+     */
+    private $contact;
 
 
     /**
@@ -109,5 +115,29 @@ class Message
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param \ChatBundle\Entity\Contact $contact
+     *
+     * @return Message
+     */
+    public function setContact(\ChatBundle\Entity\Contact $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \ChatBundle\Entity\Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
     }
 }

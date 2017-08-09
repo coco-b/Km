@@ -22,3 +22,7 @@ ChatBundle\Entity\Message:
             targetEntity: ChatBundle\Entity\User
             inversedBy: messages
 
+        contact:
+            targetEntity: ChatBundle\Entity\Contact
+            inversedBy: messages
+

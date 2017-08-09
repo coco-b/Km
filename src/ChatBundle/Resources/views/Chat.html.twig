@@ -63,7 +63,7 @@
                        <li>
                            <div class="chip">
                                <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
-                              {{ user.username }}
+                             <a href="{{ path('chat_add_chat', {'id' : user.id}) }}" >{{ user.username }}</a>
                            </div>
                        </li>
                         {% endif %}

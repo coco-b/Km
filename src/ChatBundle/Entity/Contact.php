@@ -7,21 +7,35 @@ namespace ChatBundle\Entity;
  */
 class Contact
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $pseudo;
+    private $messages;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $users;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -29,26 +43,70 @@ class Contact
     }
 
     /**
-     * Set pseudo
+     * Add message
      *
-     * @param string $pseudo
+     * @param \ChatBundle\Entity\Message $message
      *
      * @return Contact
      */
-    public function setPseudo($pseudo)
+    public function addMessage(\ChatBundle\Entity\Message $message)
     {
-        $this->pseudo = $pseudo;
+        $this->messages[] = $message;
 
         return $this;
     }
 
     /**
-     * Get pseudo
+     * Remove message
      *
-     * @return string
+     * @param \ChatBundle\Entity\Message $message
      */
-    public function getPseudo()
+    public function removeMessage(\ChatBundle\Entity\Message $message)
     {
-        return $this->pseudo;
+        $this->messages->removeElement($message);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \ChatBundle\Entity\User $user
+     *
+     * @return Contact
+     */
+    public function addUser(\ChatBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \ChatBundle\Entity\User $user
+     */
+    public function removeUser(\ChatBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

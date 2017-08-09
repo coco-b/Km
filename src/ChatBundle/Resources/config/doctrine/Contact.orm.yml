@@ -8,10 +8,15 @@ ChatBundle\Entity\Contact:
             id: true
             generator:
                 strategy: AUTO
-    fields:
-        pseudo:
-            type: string
-            length: 255
-            nullable: true
-            unique: true
-    lifecycleCallbacks: {  }
+
+
+    manyToMany:
+        users:
+            targetEntity: ChatBundle\Entity\User
+            inverseBy: contacts
+
+
+    oneToMany:
+        messages:
+            targetEntity: ChatBundle\Entity\Message
+            mappedBy: contact
