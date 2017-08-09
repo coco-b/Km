@@ -1,0 +1,17 @@
+ChatBundle\Entity\Contact:
+    type: entity
+    table: null
+    repositoryClass: ChatBundle\Repository\ContactRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        pseudo:
+            type: string
+            length: 255
+            nullable: true
+            unique: true
+    lifecycleCallbacks: {  }
