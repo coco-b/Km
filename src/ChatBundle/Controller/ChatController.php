@@ -28,12 +28,12 @@ class ChatController extends Controller
     {
         $em =$this->getDoctrine()->getManager();
         $messages = $em ->getRepository(Message::class)->findAll();
-        $users = $em->getRepository('ChatBundle:User')->findAll();
-
+        $users = $em ->getRepository('ChatBundle:User')->findAll();
 
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
@@ -56,7 +56,7 @@ class ChatController extends Controller
 
     }
 
-    public function addContactAction(User $user)
+    public function addContactAction(Request $request, User $user)
     {
         $userconnected = $this->getUser();
         $contact = $user;
@@ -74,7 +74,8 @@ class ChatController extends Controller
 
             return $this->redirectToRoute('chat_add_message_chat', array(
                 'contact' => $contact,
-                'userconnected' => $userconnected
+                'userconnected' => $userconnected,
+
             ));
 
 
@@ -90,36 +91,42 @@ class ChatController extends Controller
     }
 
 
-    public function chatAddMessageAction(Request $request, $contact, $userconnected)
-    {
-
-
-        $message = new Message();
-        $form = $this->createForm(MessageType::class, $message);
-        $form->handleRequest($request);
-
-        $user = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $messages = $em ->getRepository('ChatBundle:Message')->myfindmessages($contact, $userconnected);
-
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
-            $message->setDateTime(new \DateTime());
-            $em->persist($message);
-            $em->flush();
-
-            return $this->redirectToRoute('chat_add_chat');
-        }
-
-        return $this->render('@Chat/chatchat.html.twig', array(
-            'contact' => $userconnected,
-            'user' => $user,
-            'message' => $message,
-            'messages' => $messages,
-            'form' => $form->createView(),
-        ));
-    }
+//    public function chatAddMessageAction(Request $request, $contact, $userconnected)
+//    {
+//
+//        $message = new Message();
+//        $form = $this->createForm(MessageType::class, $message);
+//        $form->handleRequest($request);
+//
+//        $em = $this ->getDoctrine()->getManager();
+//        $messages = $em ->getRepository('ChatBundle:Message')->myfindmessages($contact, $userconnected);
+//        //dump($message);die();
+//
+//        if ($form->isSubmitted() && $form->isValid())
+//        {
+//            //dump($message);die();
+//            $message->setDateTime(new \DateTime());
+//            $em->persist($message);
+//            $em->flush();
+//
+//             return $this->render('@Chat/chatchat.html.twig', array(
+//            'userconnected' => $userconnected,
+//            'contact' => $contact,
+//            'message' => $message,
+//            'messages' => $messages,
+//            'form' => $form->createView(),
+//
+//        ));
+//
+//        }
+//
+//        return $this->render('@Chat/chatchat.html.twig', array(
+//            'userconnected' => $userconnected,
+//            'contact' => $contact,
+//            'message' => $message,
+//            'messages' => $messages,
+//            'form' => $form->createView(),
+//        ));
+//    }
 
 }

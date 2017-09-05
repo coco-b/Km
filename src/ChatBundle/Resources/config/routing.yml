@@ -16,7 +16,10 @@ chat_homepage:
 chat_add_chat:
     path: /chatAdd/{id}
     defaults: { _controller: ChatBundle:Chat:addContact}
+    methods: [GET, POST]
+
 
 chat_add_message_chat:
     path: /chatMessage/{contact}/{userconnected}
-    defaults: { _controller: ChatBundle:Chat:chatAddMessage}
+    defaults: { _controller: ChatBundle:Chatchat:chatAddMessage}
+    methods: [GET, POST]

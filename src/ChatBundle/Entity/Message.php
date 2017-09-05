@@ -8,7 +8,6 @@ namespace ChatBundle\Entity;
 class Message
 {
 
-
     /**
      * @var integer
      */

@@ -13,7 +13,7 @@ ChatBundle\Entity\Contact:
     manyToMany:
         users:
             targetEntity: ChatBundle\Entity\User
-            inverseBy: contacts
+            inversedBy: contacts
 
 
     oneToMany:

@@ -8,5 +8,4 @@ namespace ChatBundle\Entity;
 class Message
 {
 
-
 }

@@ -18,7 +18,6 @@ class User extends BaseUser
 
 
 
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
