@@ -63,21 +63,21 @@ class ChatController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $existOb = $em ->getRepository('ChatBundle:Contact')->myfindContact($contact, $userconnected);
-$exist = $existOb[0]->getId();
-        if (empty($exist))
+
+        if (empty($existOb))
         {
             $tab = new Contact();
             $tab ->addUser($contact);
             $tab ->addUser($userconnected);
             $em->persist($tab);
             $em->flush();
-
+            $tabId = $tab->getId();
             return $this->redirectToRoute('chat_add_message_chat', array(
                 'contact' => $contact,
-                'exist' => $exist
+                'exist' => $tabId
             ));
         }
-
+        $exist = $existOb[0]->getId();
         return $this->redirectToRoute('chat_add_message_chat', array(
             'contact' => $contact,
             'exist' => $exist
@@ -100,7 +100,7 @@ $exist = $existOb[0]->getId();
         $em = $this->getDoctrine()->getManager();
         //Trouver la table contact
         $messages = $em ->getRepository('ChatBundle:Message')->myfindmessages($exist);
-        dump($messages);die();
+
 
 
         if ($form->isSubmitted() && $form->isValid())
