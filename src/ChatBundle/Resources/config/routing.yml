@@ -18,5 +18,5 @@ chat_add_chat:
     defaults: { _controller: ChatBundle:Chat:addContact}
 
 chat_add_message_chat:
-    path: /chatMessage/{contact}/{userconnected}
+    path: /chatMessage/{contact}/{exist}
     defaults: { _controller: ChatBundle:Chat:chatAddMessage}

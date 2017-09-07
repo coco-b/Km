@@ -62,8 +62,8 @@ class ChatController extends Controller
         $contact = $user;
 
         $em = $this->getDoctrine()->getManager();
-        $exist = $em ->getRepository('ChatBundle:Contact')->myfindconctact($contact, $userconnected);
-
+        $existOb = $em ->getRepository('ChatBundle:Contact')->myfindContact($contact, $userconnected);
+$exist = $existOb[0]->getId();
         if (empty($exist))
         {
             $tab = new Contact();
@@ -74,43 +74,49 @@ class ChatController extends Controller
 
             return $this->redirectToRoute('chat_add_message_chat', array(
                 'contact' => $contact,
-                'userconnected' => $userconnected
+                'exist' => $exist
             ));
-
-
-
         }
 
         return $this->redirectToRoute('chat_add_message_chat', array(
             'contact' => $contact,
-            'userconnected' => $userconnected
+            'exist' => $exist
         ));
 
 
     }
 
 
-    public function chatAddMessageAction(Request $request, $contact, $userconnected)
+    public function chatAddMessageAction(Request $request, $contact, $exist)
     {
 
 
         $message = new Message();
+        $userconnected = $this->getUser();
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-        $messages = $em ->getRepository('ChatBundle:Message')->myfindmessages($contact, $userconnected);
+        //Trouver la table contact
+        $messages = $em ->getRepository('ChatBundle:Message')->myfindmessages($exist);
+        dump($messages);die();
 
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $em = $this->getDoctrine()->getManager();
+
+            $exist= $em ->getRepository('ChatBundle:Contact')->findOneById($exist);
             $message->setDateTime(new \DateTime());
+            $message->setContact($exist);//ajouter la table contact à l'id
+            $message->setUser($userconnected);
             $em->persist($message);
             $em->flush();
-
-            return $this->redirectToRoute('chat_add_chat');
+            $exist = $exist->getId();
+            return $this->redirectToRoute('chat_add_message_chat', array(
+                'contact' => $contact,
+                'exist' => $exist
+            ));
         }
 
         return $this->render('@Chat/chatchat.html.twig', array(

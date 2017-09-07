@@ -10,17 +10,14 @@ namespace ChatBundle\Repository;
  */
 class MessageRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function myfindmessages($contact, $userconnected)
+    public function myfindmessages($exist)
     {
         return $this->createQueryBuilder("m")
             ->select('m')
             ->join('m.contact','contact')
-            ->where(':profilone MEMBER OF contact.users')
-            ->andwhere(':profiltwo MEMBER OF contact.users')
-            ->setParameters(array(
-                'profilone' => $contact,
-                'profiltwo' => $userconnected)
-            )
+            ->where('contact = :cont')
+            ->setParameter('cont', $exist)
+
             ->getQuery()->getResult();
     }
 
