@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+<div class="parallax-container">
+    <div class="parallax"><img src="https://vertufineart.com/wp-content/uploads/2013/03/Alex-Katz-gray-day-1992.jpg"></div>
+</div>
+
+
+
+
+    <div class="section white">
+    <div class="row container">
+    <div class="container">
+        <div class="row row">
+            <div class="row">
+                {{ form_start(form) }}
+                <div class="input-field col s6">
+                    {{ form_label (form.nom) }}
+                    {{ form_widget (form.nom) }}
+                    {{ form_errors (form.nom) }}
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.submit, {'attr' : {'class': 'btn btn-primary'}}) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for groupe in groupes %}
+
+
+
+            <div class="row">
+                <div class="col s12 m5">
+
+
+
+                        {% if  groupe.nom is null %}
+                        {% else %}
+                            <a href="{{ path('chat_groupe') }}" class="waves-effect waves-light btn">{{ groupe.nom }}</a>
+                        {% endif %}
+
+
+
+                </div>
+            </div>
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="http://alexkatz.guggenheim-bilbao.eus/img/Alex-Katz-2012-White-Roses-9-Zoom.jpg"></div>
+    </div>
+
+
+
+
+
+{% endblock %}

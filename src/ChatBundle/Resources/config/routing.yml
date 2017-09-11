@@ -20,3 +20,11 @@ chat_add_chat:
 chat_add_message_chat:
     path: /chatMessage/{invite}/{exist}
     defaults: { _controller: ChatBundle:Chat:chatAddMessage}
+
+chat_groupe:
+    path:   /groupe
+    defaults: { _controller: ChatBundle:Groupe:GroupeAdd}
+
+chat_user:
+    path: /
+    defaults:
