@@ -56,38 +56,50 @@ class ChatController extends Controller
 
     }
 
+    /**
+     * Create new objet contact (2 utilisateur)
+     */
+
     public function addContactAction(User $user)
     {
         $userconnected = $this->getUser();
-        $contact = $user;
+        //<Utilisteur connecte
+        $invite = $user;
+        //utilisateur que l'on veut inviter
 
         $em = $this->getDoctrine()->getManager();
-        $existOb = $em ->getRepository('ChatBundle:Contact')->myfindContact($contact, $userconnected);
+        $existOb = $em ->getRepository('ChatBundle:Contact')->myfindContact($invite, $userconnected);
+        //on verifi que lobjet contact existe avec les deux utilisateurs
 
         if (empty($existOb))
+        //Si lobjet est vide alors on creer notre table contact
         {
             $tab = new Contact();
-            $tab ->addUser($contact);
+            $tab ->addUser($invite);
             $tab ->addUser($userconnected);
             $em->persist($tab);
             $em->flush();
             $tabId = $tab->getId();
+            //on recupere l'iD de notre objet
             return $this->redirectToRoute('chat_add_message_chat', array(
-                'contact' => $contact,
+                'invite' => $invite,
                 'exist' => $tabId
             ));
         }
         $exist = $existOb[0]->getId();
         return $this->redirectToRoute('chat_add_message_chat', array(
-            'contact' => $contact,
+            'invite' => $invite,
             'exist' => $exist
         ));
 
 
     }
 
+    /**
+     *
+     */
 
-    public function chatAddMessageAction(Request $request, $contact, $exist)
+    public function chatAddMessageAction(Request $request, $invite, $exist)
     {
 
 
@@ -96,32 +108,27 @@ class ChatController extends Controller
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 
-        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         //Trouver la table contact
         $messages = $em ->getRepository('ChatBundle:Message')->myfindmessages($exist);
 
-
-
         if ($form->isSubmitted() && $form->isValid())
         {
-
-            $exist= $em ->getRepository('ChatBundle:Contact')->findOneById($exist);
+            $contact= $em ->getRepository('ChatBundle:Contact')->findOneById($exist);
             $message->setDateTime(new \DateTime());
-            $message->setContact($exist);//ajouter la table contact à l'id
+            $message->setContact($contact);//ajouter la table contact à l'id
             $message->setUser($userconnected);
             $em->persist($message);
             $em->flush();
-            $exist = $exist->getId();
+            $exist = $contact->getId();
             return $this->redirectToRoute('chat_add_message_chat', array(
-                'contact' => $contact,
+                'invite' => $invite,
                 'exist' => $exist
             ));
         }
 
         return $this->render('@Chat/chatchat.html.twig', array(
             'contact' => $userconnected,
-            'user' => $user,
             'message' => $message,
             'messages' => $messages,
             'form' => $form->createView(),

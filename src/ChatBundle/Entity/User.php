@@ -95,4 +95,43 @@ class User extends BaseUser
     {
         return $this->contacts;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $groupes;
+
+
+    /**
+     * Add groupe
+     *
+     * @param \ChatBundle\Entity\User $groupe
+     *
+     * @return User
+     */
+    public function addGroupe(\ChatBundle\Entity\User $groupe)
+    {
+        $this->groupes[] = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupe
+     *
+     * @param \ChatBundle\Entity\User $groupe
+     */
+    public function removeGroupe(\ChatBundle\Entity\User $groupe)
+    {
+        $this->groupes->removeElement($groupe);
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
+    }
 }

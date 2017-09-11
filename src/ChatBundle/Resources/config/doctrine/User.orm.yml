@@ -16,4 +16,7 @@ ChatBundle\Entity\User:
         contacts:
             targetEntity: ChatBundle\Entity\Contact
             mappedBy: users
+        groupes:
+            targetEntity: ChatBundle\Entity\User
+            mappedBy: users
 
