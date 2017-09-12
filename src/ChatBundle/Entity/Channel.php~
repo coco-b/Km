@@ -1,0 +1,11 @@
+<?php
+
+namespace ChatBundle\Entity;
+
+/**
+ * Channel
+ */
+class Channel
+{
+  
+}

@@ -95,4 +95,43 @@ class User extends BaseUser
     {
         return $this->contacts;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $channels;
+
+
+    /**
+     * Add channel
+     *
+     * @param \ChatBundle\Entity\Channel $channel
+     *
+     * @return User
+     */
+    public function addChannel(\ChatBundle\Entity\Channel $channel)
+    {
+        $this->channels[] = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Remove channel
+     *
+     * @param \ChatBundle\Entity\Channel $channel
+     */
+    public function removeChannel(\ChatBundle\Entity\Channel $channel)
+    {
+        $this->channels->removeElement($channel);
+    }
+
+    /**
+     * Get channels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChannels()
+    {
+        return $this->channels;
+    }
 }

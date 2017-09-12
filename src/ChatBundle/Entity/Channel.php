@@ -3,15 +3,20 @@
 namespace ChatBundle\Entity;
 
 /**
- * Contact
+ * Channel
  */
-class Contact
+class Channel
 {
-
+  
     /**
      * @var integer
      */
     private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -43,11 +48,35 @@ class Contact
     }
 
     /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Channel
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Add message
      *
      * @param \ChatBundle\Entity\Message $message
      *
-     * @return Contact
+     * @return Channel
      */
     public function addMessage(\ChatBundle\Entity\Message $message)
     {
@@ -81,7 +110,7 @@ class Contact
      *
      * @param \ChatBundle\Entity\User $user
      *
-     * @return Contact
+     * @return Channel
      */
     public function addUser(\ChatBundle\Entity\User $user)
     {

@@ -20,3 +20,18 @@ chat_add_chat:
 chat_add_message_chat:
     path: /chatMessage/{contact}/{exist}
     defaults: { _controller: ChatBundle:Chat:chatAddMessage}
+channel_index:
+    path:     /index
+    defaults: { _controller: ChatBundle:Channel:index }
+
+channel_add_channel:
+    path:     /AddChannel
+    defaults: { _controller: ChatBundle:Channel:AddChannel }
+
+channel_add_members:
+    path:     /AddMembers
+    defaults: { _controller: ChatBundle:Channel:AddMembers }
+
+channel:
+    path:     /Channel
+    defaults: { _controller: ChatBundle:Channel:channel }

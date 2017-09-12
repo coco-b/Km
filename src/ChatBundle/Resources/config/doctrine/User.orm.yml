@@ -17,3 +17,9 @@ ChatBundle\Entity\User:
             targetEntity: ChatBundle\Entity\Contact
             mappedBy: users
 
+
+
+        channels:
+            targetEntity: ChatBundle\Entity\Channel
+            mappedBy: users
+

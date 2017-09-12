@@ -25,4 +25,6 @@ ChatBundle\Entity\Message:
         contact:
             targetEntity: ChatBundle\Entity\Contact
             inversedBy: messages
-
+        channel:
+            targetEntity: ChatBundle\Entity\Channel
+            inversedBy: messages

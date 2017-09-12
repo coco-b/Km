@@ -1,0 +1,25 @@
+ChatBundle\Entity\Channel:
+    type: entity
+    table: null
+    repositoryClass: ChatBundle\Repository\ChannelRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToMany:
+        users:
+            targetEntity: ChatBundle\Entity\User
+            inversedBy: channels
+
+
+    oneToMany:
+        messages:
+            targetEntity: ChatBundle\Entity\Message
+            mappedBy: channel

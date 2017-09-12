@@ -140,4 +140,33 @@ class Message
     {
         return $this->contact;
     }
+    /**
+     * @var \ChatBundle\Entity\Channel
+     */
+    private $channel;
+
+
+    /**
+     * Set channel
+     *
+     * @param \ChatBundle\Entity\Channel $channel
+     *
+     * @return Message
+     */
+    public function setChannel(\ChatBundle\Entity\Channel $channel = null)
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Get channel
+     *
+     * @return \ChatBundle\Entity\Channel
+     */
+    public function getChannel()
+    {
+        return $this->channel;
+    }
 }
