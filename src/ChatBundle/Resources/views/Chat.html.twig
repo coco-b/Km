@@ -27,22 +27,22 @@
                     </div>
                 </div>
             </div>
-<a href="{{ path('channel_index')}}">Ajouter un groupe de discussion</a>
+            <a href="{{ path('channel_index')}}">Ajouter un groupe de discussion</a>
             {% for message in messages %}
-            <div class="row">
-                <div class="col s12 m5">
-                    <div class="card-panel teal">
-                        <span class="white-text"> {{ message.dateTime|date('m/d/Y') }} </span></br>
+                <div class="row">
+                    <div class="col s12 m5">
+                        <div class="card-panel teal">
+                            <span class="white-text"> {{ message.dateTime|date('m/d/Y') }} </span></br>
 
-                        {% if  message.user is null %}
+                            {% if  message.user is null %}
                         {% else %}
                         <span class="white-text"> {{ message.user.username }} </span></br>
                         {% endif %}
 
-                        <span class="white-text"> {{ message.content }} </span>
+                            <span class="white-text"> {{ message.content }} </span>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
 
 
@@ -60,13 +60,13 @@
                             {% if user == app.user  %}
 
                             {% else  %}
-                       <li>
-                           <div class="chip">
-                               <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
-                             <a href="{{ path('chat_add_chat', {'id' : user.id}) }}" >{{ user.username }}</a>
-                           </div>
-                       </li>
-                        {% endif %}
+                                <li>
+                                    <div class="chip">
+                                        <img src="https://cdn3.opnminded.com/wp-content/uploads/2016/12/street-art-14.jpg" alt="Contact Person">
+                                        <a href="{{ path('chat_add_chat', {'id' : user.id}) }}" >{{ user.username }}</a>
+                                    </div>
+                                </li>
+                            {% endif %}
                         {% endfor %}
 
                     </ul>

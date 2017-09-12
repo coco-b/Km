@@ -10,4 +10,14 @@ namespace ChatBundle\Repository;
  */
 class ChannelRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function myfindChannels($user)
+    {
+        return $this->createQueryBuilder('channel_repository')
+            ->select('channel_repository')
+            ->join('channel_repository.users','contact')
+            ->where('contact = :cont')
+            ->setParameter('cont', $user)
+
+            ->getQuery()->getResult();
+    }
 }

@@ -32,9 +32,11 @@ channel_add_channel:
 
 
 channel_add_members:
-    path:     /AddMembers/{channel}
-    defaults: { _controller: ChatBundle:Channel:AddMembers }
+    path:     /AddMembers/{channelId}
+    defaults: { _controller: ChatBundle:Channel:AddMembers, channelId: null }
+    methods: [GET, POST]
 
 channel:
-    path:     /Channel
-    defaults: { _controller: ChatBundle:Channel:channel }
+    path:     /Channel/{channelId}
+    defaults: { _controller: ChatBundle:Channel:channel, channelId: null }
+    methods: [GET, POST]

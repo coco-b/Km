@@ -1,0 +1,54 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ChatBundle:Channel:index{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Channel {{ channel.name }}</h1>
+
+    <p>Here are the people in this channel => </p>
+
+    {% for channelUser in channel.users%}
+        {{ channelUser.username }}
+    {% endfor %}
+    <div class="container">
+        <div class="row row">
+            <div class="row">
+                {{ form_start(form) }}
+                <div class="input-field col s6">
+                    {{ form_label (form.content) }}
+                    {{ form_widget (form.content) }}
+                    {{ form_errors (form.content) }}
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.submit, {'attr' : {'class': 'btn btn-primary'}}) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if messages is not null %}
+        {% for message in messages %}
+            <div class="row">
+                <div class="col s12 m5">
+                    <div class="card-panel teal">
+                        <span class="white-text"> {{ message.dateTime|date('m/d/Y') }} </span></br>
+
+                        {% if  message.user is null %}
+                    {% else %}
+                        <span class="white-text"> {{ message.user.username }} </span></br>
+                    {% endif %}
+
+                        <span class="white-text"> {{ message.content }} </span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+
+    {% endif %}
+
+    <a href="{{ path('channel_add_members') }}">add members</a>
+
+{% endblock %}

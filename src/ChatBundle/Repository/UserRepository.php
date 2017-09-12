@@ -10,4 +10,5 @@ namespace ChatBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

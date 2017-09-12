@@ -4,6 +4,14 @@
 
 {% block body %}
 <h1>Welcome to the Channel:index page</h1>
-    <a href="{{ path('channel_add_channel') }}">go</a>
+    <a href="{{ path('channel_add_channel') }}">Make a channel</a>
+
+    <p>Here are all your channels =></p>
+
+    {% for channel in channels %}
+       <p> <a href="{{ path('channel', {'channelId': channel.id}) }}">{{ channel.name }}</a></p>
+    {% endfor %}
+
+
 
 {% endblock %}
