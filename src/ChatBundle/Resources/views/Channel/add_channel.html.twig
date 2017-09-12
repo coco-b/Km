@@ -5,7 +5,7 @@
 {% block body %}
 <h1>Welcome to the Channel:AddChannel page</h1>
     <div class="container">
-        <div class="row row">
+
             <div class="row">
                 {{ form_start(form) }}
                 <div class="input-field col s6">
@@ -13,13 +13,7 @@
                     {{ form_widget (form.name) }}
                     {{ form_errors (form.name) }}
                 </div>
+                {{ form_end(form) }}
             </div>
-            <div class="row">
-                <div>
-
-                    {{ form_end(form) }}
-                </div>
-            </div>
-        </div>
     </div>
 {% endblock %}

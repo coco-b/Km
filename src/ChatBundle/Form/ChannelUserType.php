@@ -2,13 +2,15 @@
 
 namespace ChatBundle\Form;
 
+use Proxies\__CG__\ChatBundle\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChannelType extends AbstractType
+class ChannelUserType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,12 +18,16 @@ class ChannelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-            $builder->add('name', CollectionType::class, array(
-                'entry_type'   => UserType::class,
-                'allow_add'    => true,
-                'allow_delete' => true
+        $builder->add('name', EntityType::class, array(
 
-            ))
+        'class'        => User::class,
+
+        'multiple'     => true,
+            'expanded' => true
+
+    ))
+
+
         ->add('Envoyer', SubmitType::class);
     }
 

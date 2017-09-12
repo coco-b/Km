@@ -26,10 +26,13 @@ channel_index:
 
 channel_add_channel:
     path:     /AddChannel
-    defaults: { _controller: ChatBundle:Channel:AddChannel }
+    defaults:
+        _controller: ChatBundle:Channel:AddChannel
+
+
 
 channel_add_members:
-    path:     /AddMembers
+    path:     /AddMembers/{channel}
     defaults: { _controller: ChatBundle:Channel:AddMembers }
 
 channel:
